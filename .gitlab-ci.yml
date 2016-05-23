@@ -1,7 +1,7 @@
 image: robertofilho/maven # java7 com maven
 
 # Parallel jobs, each line is a parallel build
-main:
+generate-site:
   - script: mvn p2:site
 
 # Deploy
