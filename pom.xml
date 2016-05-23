@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.reficio.rcp</groupId>
+    <artifactId>example-p2-site</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <repositories>
+      <!-- Repostitórios do springsource, tem toneladas de bundles -->
+      <repository>
+        <id>com.springsource.repository.bundles.release</id>
+        <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+        <url>http://repository.springsource.com/maven/bundles/release</url>
+      </repository>
+
+      <repository>
+        <id>com.springsource.repository.bundles.external</id>
+        <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+        <url>http://repository.springsource.com/maven/bundles/external</url>
+      </repository>
+
+      <repository>
+  			<id>mvn-gtech</id>
+  			<url>http://mvn-repo.gtechs.xyz/release</url>
+  		</repository>
+
+    </repositories>
+
+    <build>
+        <plugins>
+          <plugin>
+              <groupId>org.reficio</groupId>
+              <artifactId>p2-maven-plugin</artifactId>
+              <version>1.2.0-SNAPSHOT</version>
+              <executions>
+                  <execution>
+                      <id>default-cli</id>
+                      <!-- QUICK-START EXAMPLE -->
+                      <!--
+                      This is the default quick-start configuration.
+
+                      Expected behavior:
+                        - specified dependencies will be fetched
+                        - transitive dependencies will be fetched (no default exclusions)
+                        - jars containing source source code will NOT be fetched
+                        - jars that are NOT OSGi bundles will be "bundled" using bnd tool,
+                          if you specify instructions for these jars they will be APPLIED
+                        - jars that are OSGi bundles will be simply included
+                          if you specify instructions for these jars they will be IGNORED (see <override> option)
+                        - p2 site will be generated
+
+                      How the instructions works:
+                        - instructions are applied only to the root artifact that you specify!
+                        - instructions are not applied to the TRANSITIVE dependencies!
+                        - transitive dependencies are never overridden (see <override> option)
+                        - transitive dependencies are bundled using the default instructions:
+                            <instructions>
+                                <Import-Package>*;resolution:=optional</Import-Package>
+                                <Export-Package>*</Export-Package>
+                            </instructions>
+                        - other instructions, such as, Bundle-SymbolicName, Bundle-Name, Bundle-Version, etc.
+                          are calculated according to the following rules:
+                          http://felix.apache.org/site/apache-felix-maven-bundle-plugin-bnd.html
+                        - if you specify any instructions they will be applied only if
+                          the jar is not already an OSGi bundle - otherwise you have to use the override
+                          option - please see the /examples/override/pom.xml example
+
+                      The following definition of an artifact:
+                          <artifact>
+                              <id>commons-io:commons-io:2.1</id>
+                          </artifact>
+
+                      is an equivalent of the following definition:
+                          <artifact>
+                              <id>commons-io:commons-io:2.1</id>
+                              <transitive>true</transitive>
+                              <source>false</source>
+                              <override>false</override>
+                              <instructions>
+                                  <Import-Package>*;resolution:=optional</Import-Package>
+                                  <Export-Package>*</Export-Package>
+                              </instructions>
+                              <excludes/>
+                          </artifact>
+
+                      To run the example please invoke: mvn p2:site
+                      -->
+                      <configuration>
+                          <artifacts>
+                              <artifact>
+                                  <id>org.apache.log4j:com.springsource.org.apache.log4j:1.2.16</id>
+                                  <id>org.postgresql:postgresql:9.4-1206-jdbc4</id>
+                                  <id>org.osgi:org.osgi.enterprise:5.0.0</id>
+                                  <id>org.everit.osgi:org.everit.osgi.liquibase.bundle:3.1.1-20160310</id>
+                                  <id>org.slf4j:slf4j-api:1.7.13</id>
+                                  <id>org.slf4j:slf4j-simple:1.7.13</id>
+                              </artifact>
+                          </artifacts>
+                      </configuration>
+
+                  </execution>
+              </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+            <executions>
+              <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>single</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+        </plugins>
+    </build>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>reficio</id>
+            <url>http://repo.reficio.org/maven/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
