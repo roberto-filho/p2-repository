@@ -2,8 +2,13 @@ image: robertofilho/maven # java7 com maven
 
 # Parallel jobs, each line is a parallel build
 generate-site:
-  - script: mvn p2:site
+  stage: build
+  script:
+    - mvn p2:site
 
 # Deploy
-on_success:
-  - echo "Success!" # Zipar e jogar no gtech.site
+deploy:
+  stage: deploy
+  script:
+    - echo "Success!" # Zipar e jogar no gtech.site
+  when: on_success
