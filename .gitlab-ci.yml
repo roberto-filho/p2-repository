@@ -1,0 +1,11 @@
+image: robertofilho/maven
+
+# Parallel jobs, each line is a parallel build
+jobs:
+  - script: mvn p2:site
+    runner: “ruby,postgres”
+    name: “Rspec”
+
+# Deploy
+on_success:
+  - “cap deploy production” # Zipar e jogar no gtech.site
