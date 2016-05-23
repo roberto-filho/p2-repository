@@ -1,7 +1,7 @@
 image: robertofilho/maven
 
 # Parallel jobs, each line is a parallel build
-jobs:
+main:
   - script: mvn p2:site
     runner: “ruby,postgres”
     name: “Rspec”
