@@ -39,5 +39,5 @@ deploy:
   stage: deploy
   script:
     - scp site.tar.gz germantech@gtech.site:updates/p2/site.tar.gz # Copiar para o gtech.site
-    - ssh germantech@gtech.site 'cd updates/p2 && tar -xvf site.tar.gz' # Extrair
+    - ssh germantech@gtech.site 'cd updates/p2 && tar -xvf site.tar.gz && rm site.tar.gz' # Extrair
   when: on_success
