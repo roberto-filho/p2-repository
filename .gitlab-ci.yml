@@ -36,6 +36,7 @@ deploy:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   stage: deploy
   script:
-    - ll
+    - ls
+    - pwd
     - ssh germantech@gtech.site 'ls' # Zipar e jogar no gtech.site
   when: on_success
