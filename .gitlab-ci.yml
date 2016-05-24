@@ -15,7 +15,7 @@ generate-site:
   artifacts:
     name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
     paths:
-      - *.tar.gz
+      - site.tar.gz
 
 # Deploy
 deploy:
