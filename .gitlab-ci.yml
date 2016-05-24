@@ -24,6 +24,16 @@ generate-site:
   script:
     - mvn p2:site
 
+zip-artifacs:
+  stage: build
+  script:
+    - cd target/repository
+    - tar -cvf site.tar.gz *
+  artifacts:
+    paths:
+      - target/repository/site.tar.gz
+  when: on_success
+
 # Deploy
 deploy:
   stage: deploy
