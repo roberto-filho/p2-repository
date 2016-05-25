@@ -105,6 +105,9 @@
                               <artifact>
                                 <id>org.slf4j:slf4j-simple:1.7.13</id>
                               </artifact>
+                              <artifact>
+                                <id>org.postgresql:postgresql:9.4-1206-jdbc4</id>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
