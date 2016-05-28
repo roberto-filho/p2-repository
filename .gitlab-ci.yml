@@ -4,11 +4,14 @@ stages:
   - build
   - deploy
 
+cache:
+  paths:
+    - .m2/
 # Parallel jobs, each line is a parallel build
 generate-site:
   stage: build
   script:
-    - mvn p2:site
+    - mvn p2:site -Dmaven.repo.local=$HOME # Cache maven repository
   artifacts:
     name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
     paths:
@@ -19,7 +22,8 @@ deploy:
   stage: deploy
   script:
     - ls
+    - cd target/repository
     - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
     - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
-    #- aws s3 cp --recursive . s3://updates.gtech.site/p2/
+    - aws s3 cp --recursive . s3://updates.gtech.site/p2/
   when: on_success
