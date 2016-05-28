@@ -8,7 +8,7 @@ stages:
 generate-site:
   stage: build
   script:
-    - aws --version # Check if aws is there
+    - aws s3 ls s3://mvn.gtech.site/release/ # Check if aws is there
     - mvn p2:site
     - cd target/repository
     - tar -cvf site.tar.gz *
