@@ -11,7 +11,7 @@ cache:
 generate-site:
   stage: build
   script:
-    - mvn p2:site -Dmaven.repo.local=$PWD # Cache maven repository
+    - mvn p2:site -Dmaven.repo.local=$PWD/.m2 # Cache maven repository
   artifacts:
     name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
     paths:
