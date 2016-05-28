@@ -10,35 +10,16 @@ generate-site:
   script:
     - aws s3 ls s3://mvn.gtech.site/release/ # Check if aws is there
     - mvn p2:site
-    - cd target/repository
-    - tar -cvf site.tar.gz *
-    - mv site.tar.gz ../../
   artifacts:
     name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
     paths:
-      - site.tar.gz
+      - target/repository
 
 # Deploy
 deploy:
-  before_script:
-    # Install ssh-agent if not already installed, it is required by Docker.
-    # (change apt-get to yum if you use a CentOS-based image)
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-
-    # Run ssh-agent (inside the build environment)
-    - eval $(ssh-agent -s)
-
-    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
-
-    # For Docker builds disable host key checking. Be aware that by adding that
-    # you are suspectible to man-in-the-middle attacks.
-    # WARNING: Use this only with the Docker executor, if you use it with shell
-    # you will overwrite your user's SSH config.
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   stage: deploy
   script:
-    - scp site.tar.gz germantech@gtech.site:updates/p2/site.tar.gz # Copiar para o gtech.site
-    - ssh germantech@gtech.site 'cd updates/p2 && tar -xvf site.tar.gz && rm site.tar.gz' # Extrair
+    - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
+    - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
+    #- aws s3 cp --recursive . s3://updates.gtech.site/p2/
   when: on_success
