@@ -1,4 +1,4 @@
-image: robertofilho/maven # java7 com maven
+image: robertofilho/maven-java8:java8-awscli # java7 com maven
 
 stages:
   - build
@@ -8,6 +8,7 @@ stages:
 generate-site:
   stage: build
   script:
+    - aws --version # Check if aws is there
     - mvn p2:site
     - cd target/repository
     - tar -cvf site.tar.gz *
