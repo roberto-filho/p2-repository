@@ -117,6 +117,9 @@
                               <artifact>
                                 <id>org.jsoup:jsoup:1.8.2</id>
                               </artifact>
+                              <artifact>
+                                <id>org.unitils:unitils-core:3.4.2</id>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
