@@ -115,6 +115,9 @@
                                 <id>org.apache.httpcomponents:httpcore:4.4.5</id>
                               </artifact>
                               <artifact>
+                                <id>commons-codec:commons-codec:1.9</id>
+                              </artifact>
+                              <artifact>
                                 <id>org.jsoup:jsoup:1.8.2</id>
                               </artifact>
                               <artifact>
