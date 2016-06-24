@@ -118,10 +118,16 @@
                                 <id>commons-codec:commons-codec:1.9</id>
                               </artifact>
                               <artifact>
+                                <id>commons-logging:commons-logging:1.2</id>
+                              </artifact>
+                              <artifact>
                                 <id>org.jsoup:jsoup:1.8.2</id>
                               </artifact>
                               <artifact>
                                 <id>org.unitils:unitils-core:3.4.2</id>
+                              </artifact>
+                              <artifact>
+                                <id>net.sourceforge.htmlcleaner:htmlcleaner:2.16</id>
                               </artifact>
                           </artifacts>
                       </configuration>
