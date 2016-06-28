@@ -109,6 +109,7 @@
                                 <id>net.sourceforge.htmlcleaner:htmlcleaner:2.10</id>
                                 <!-- <override>true</override> -->
                               </artifact>
+                              <artifact><id>com.google.guava:guava:14.0.1</id></artifact>
                           </artifacts>
                       </configuration>
 
