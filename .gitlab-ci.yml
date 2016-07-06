@@ -1,29 +1,23 @@
 image: robertofilho/maven-java8:java8-awscli # java7 com maven
 
 stages:
-  - build
+  - deploy
   - deploy
 
 cache:
   paths:
     - .m2/
-# Parallel jobs, each line is a parallel build
-generate-site:
-  stage: build
-  script:
-    - mvn p2:site -Dmaven.repo.local=$PWD/.m2 # Cache maven repository
-  artifacts:
-    name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
-    paths:
-      - target/repository
 
-# Deploy
-deploy:
+generate-site:
   stage: deploy
   script:
+    - mvn p2:site -Dmaven.repo.local=$PWD/.m2 # Cache maven repository
     - ls
     - cd target/repository
     - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
     - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
     - aws s3 cp --recursive . s3://updates.gtech.site/p2/
-  when: on_success
+  artifacts:
+    name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
+    paths:
+      - target/repository
