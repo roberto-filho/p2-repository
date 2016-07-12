@@ -160,6 +160,10 @@
                                 <id>org.lindbergframework:cloner:0.1</id>
                                 <source>true</source>
                               </artifact>
+                              <artifact>
+                                <id>net.sourceforge.barbecue:barbecue:1.5-beta1</id>
+                                <source>true</source>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
