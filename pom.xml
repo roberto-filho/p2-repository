@@ -164,6 +164,10 @@
                                 <id>net.sourceforge.barbecue:barbecue:1.5-beta1</id>
                                 <source>true</source>
                               </artifact>
+                              <artifact>
+                                <id>com.google.guava:guava:19.0</id>
+                                <source>true</source>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
