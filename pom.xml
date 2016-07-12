@@ -168,6 +168,22 @@
                                 <id>com.google.guava:guava:19.0</id>
                                 <source>true</source>
                               </artifact>
+                              <artifact>
+                                <id>net.sf.jasperreports:jasperreports:5.5.0</id>
+                                <source>true</source>
+                              </artifact>
+                              <artifact>
+                                <id>org.apache.commons:commons-email:1.4</id>
+                                <source>true</source>
+                              </artifact>
+                              <artifact>
+                                <id>org.apache.commons:commons-lang3:3.4</id>
+                                <source>true</source>
+                              </artifact>
+                              <artifact>
+                                <id>commons-io:commons-io:2.5</id>
+                                <source>true</source>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
