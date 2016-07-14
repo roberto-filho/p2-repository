@@ -165,10 +165,6 @@
                                 <source>true</source>
                               </artifact>
                               <artifact>
-                                <id>com.google.guava:guava:19.0</id>
-                                <source>true</source>
-                              </artifact>
-                              <artifact>
                                 <id>net.sf.jasperreports:jasperreports:5.5.0</id>
                                 <source>true</source>
                               </artifact>
