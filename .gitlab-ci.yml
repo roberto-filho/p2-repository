@@ -14,9 +14,10 @@ generate-site:
     - mvn p2:site -Dmaven.repo.local=$PWD/.m2 # Cache maven repository
     - ls
     - cd target/repository
-    - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
-    - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
-    - aws s3 cp --recursive . s3://updates.gtech.site/p2/
+    # Send to bintray with curl
+    # - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
+    # - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
+    # - aws s3 cp --recursive . s3://updates.gtech.site/p2/
   artifacts:
     name: "${CI_BUILD_STAGE}-${CI_BUILD_REF_NAME}"
     paths:
