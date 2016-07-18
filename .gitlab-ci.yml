@@ -2,13 +2,12 @@ image: robertofilho/maven-java8:java8-awscli # java7 com maven
 
 stages:
   - deploy
-  - deploy
 
 cache:
   paths:
     - .m2/
 
-generate-site:
+site:
   stage: deploy
   script:
     - mvn p2:site -Dmaven.repo.local=$PWD/.m2 # Cache maven repository
