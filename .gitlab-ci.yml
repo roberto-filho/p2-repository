@@ -1,7 +1,7 @@
 image: robertofilho/maven-java8:java8-awscli # java7 com maven
 
 variables:
-  PACKAGE_NAME: "p2-repo"
+  PACKAGE_NAME: "p2-repository"
   PACKAGE_VERSION: "1.0.0"
 
 stages:
