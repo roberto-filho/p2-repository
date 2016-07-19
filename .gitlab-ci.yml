@@ -19,7 +19,6 @@ site:
     - cd target/repository
     - tar -czvf site.tar.gz * # create the tar file
     # Send to bintray with curl
-    - echo "curl -T site.tar.gz -u${BINTRAY_API_USER}:${BINTRAY_API_KEY} -H "X-Bintray-Package:${PACKAGE_NAME}" -H "X-Bintray-Version:${PACKAGE_VERSION}" -H "X-Bintray-Explode:1" https://api.bintray.com/content/${BINTRAY_API_USER}/generic/${PACKAGE_NAME}/${PACKAGE_VERSION}/p2/"
     - curl -T site.tar.gz -u${BINTRAY_API_USER}:${BINTRAY_API_KEY} -H "X-Bintray-Package:${PACKAGE_NAME}" -H "X-Bintray-Version:${PACKAGE_VERSION}" -H "X-Bintray-Explode:1" https://api.bintray.com/content/${BINTRAY_API_USER}/generic/${PACKAGE_NAME}/${PACKAGE_VERSION}/p2/
     # - aws s3 ls s3://updates.gtech.site/p2/ # Lista os
     # - aws s3 rm s3://updates.gtech.site/p2/* --recursive # Limpa o diretório
