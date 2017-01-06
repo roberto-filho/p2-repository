@@ -180,6 +180,10 @@
                                 <id>commons-io:commons-io:2.5</id>
                                 <source>true</source>
                               </artifact>
+                              <artifact>
+                                <id>joda-time:joda-time:2.9.7</id>
+                                <source>true</source>
+                              </artifact>
                           </artifacts>
                       </configuration>
 
