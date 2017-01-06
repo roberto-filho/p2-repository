@@ -1,4 +1,4 @@
-image: frekele/java:jdk8 # java8 com maven
+image: frekele/maven:3.3.9-jdk8 # java8 com maven
 
 variables:
   PACKAGE_NAME: "p2-repository"
